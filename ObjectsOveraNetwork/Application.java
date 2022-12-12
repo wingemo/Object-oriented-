@@ -1,9 +1,9 @@
 /**
-   * This program demonstrates how to send and receive 
-   * objects over a network using Java
-   *
-   * @Philip Wingemo
-   */
+ * This program demonstrates how to send and receive 
+ * objects over a network using Java
+ *
+ * @Philip Wingemo
+ */
 public class Application {
   /**
    * The entry point of the application.
