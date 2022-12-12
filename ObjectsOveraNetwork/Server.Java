@@ -4,6 +4,13 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * A simple server class that listens for incoming connections on port 8000,
+ * reads and writes serialized {@link Person} objects to and from the connected
+ * client.
+ *
+ * @Philip Wingemo
+ */
 public class Server {
   private ServerSocket serverSocket;
   private Socket socket;
