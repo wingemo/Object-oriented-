@@ -4,11 +4,13 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.Random;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Bank {
   public static void main(String[] args) {
     List<Transaction> transactions = new ArrayList<>();
-    List<Transaction> accounts = new ArrayList<>();
+    Map<Integer, Account> accounts = new HashMap<>();
     Scanner scanner = new Scanner(System.in);
     Random rand = new Random();
 
@@ -17,7 +19,7 @@ public class Bank {
     
     for (int i = 0; i < 10; i++) {
       Account account = new Account(i, rand.nextInt(1000));
-      accounts.add(account);
+      accounts.put(i, account);
     }
 
     for (int i = 0; i < numTransactions; i++) {
@@ -39,7 +41,6 @@ public class Bank {
     executor.shutdown();
   }
 }
-
 
 class Transaction implements Runnable {
   private Account account;
@@ -63,12 +64,12 @@ class Transaction implements Runnable {
 }
 
 class Account {
-  private String id;
+  private int id;
   private double balance;
 
-  public Account(String id, double balance) {
+  public Account(int id, double balance) {
     this.id = id;
-    this balance = balance;
+    this.balance = balance;
   }
 
   public void deposit(double amount) {
@@ -79,11 +80,26 @@ class Account {
     balance -= amount;
   }
 
-  public String getId() {
+  public int getId() {
     return id;
   }
 
   public double getBalance() {
     return balance;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Account account = (Account) o;
+    return id == account.id &&
+           Double.compare(account.balance, balance) == 0;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, balance);
+  }
 }
+
