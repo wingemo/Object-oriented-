@@ -7,23 +7,26 @@ import java.util.Random;
 
 public class Bank {
   public static void main(String[] args) {
+    List<Transaction> transactions = new ArrayList<>();
+    List<Transaction> accounts = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
+    Random rand = new Random();
+
     System.out.println("Enter the number of transactions: ");
     int numTransactions = scanner.nextInt();
     
-    Random rand = new Random();
-    for (int i = 0; i <= 10; i = i + 1) {
-      Account account = new Account(i, rand.nextInt(1000))
+    for (int i = 0; i < 10; i++) {
+      Account account = new Account(i, rand.nextInt(1000));
+      accounts.add(account);
     }
-    
-    // Create a list of transactions
-    List<Transaction> transactions = new ArrayList<>();
+
     for (int i = 0; i < numTransactions; i++) {
       System.out.println("Enter the transaction details (id, type, amount): ");
       String id = scanner.next();
+      int idAsInt = Integer.parseInt(id);
       String type = scanner.next();
       double amount = scanner.nextDouble();
-      transactions.add(new Transaction(id, type, amount));
+      transactions.add(new Transaction(type, amount, accounts.get(idAsInt)));
     }
 
     // Process the transactions in parallel
@@ -37,14 +40,13 @@ public class Bank {
   }
 }
 
+
 class Transaction implements Runnable {
-  private String id;
   private Account account;
   private double amount;
 
-  public Transaction(String id, String type, double amount, Account account) {
-  	this.id = id;
-  	ttis.type = type;
+  public Transaction(String type, double amount, Account account) {
+  	this.type = type;
   	this.amount = amount;
   	this.account = account;
   }
@@ -56,7 +58,7 @@ class Transaction implements Runnable {
     } else if (type.equals("withdraw")) {
       account.withdraw(amount);
     }
-    System.out.println("Processed transaction " + id + " for account " + account.getId() + " for the amount of " + amount + ". New balance: " + account.getBalance());
+    System.out.println("Processed transaction for account " + account.getId() + " for the amount of " + amount + ". New balance: " + account.getBalance());
   }
 }
 
