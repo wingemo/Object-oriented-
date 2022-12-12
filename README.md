@@ -1,34 +1,34 @@
-# Object-oriented-
+# Example Networking Program
 
-Here is an example of a README file for the program:
-
-Example Networking Program
 This program demonstrates how to send and receive objects over a network using Java.
 
-Requirements
-Java 8 or later
-Running the program
-To run the program, first start the server by running the following command:
+## Requirements
 
-Copy code
-java Server
-Next, start the client by running the following command:
+- Java 8 or later
 
-Copy code
-java Client
-The client will send a Person object to the server, and the server will respond by sending a different Person object back to the client. The names of the received and sent Person objects will be printed to the console.
+## Running the program
 
-Code structure
-The program consists of two classes: Server and Client.
+To run the program, first start the Main by running the following command:
 
-Server
-The Server class contains methods for creating a server socket, receiving a Person object from a client, sending a Person object to a client, and closing the server socket.
+-- Java Main --
 
-Client
-The Client class contains methods for creating a client socket, sending a Person object to a server, receiving a Person object from a server, and closing the client socket.
+The client will send a `Person` object to the server, and the server will respond by sending a different `Person` object back to the client. The names of the received and sent `Person` objects will be printed to the console.
 
-Example output
+## Code structure
+
+The program consists of two classes: `Server` and `Client`.
+
+### Server
+
+The `Server` class contains methods for creating a server socket, receiving a `Person` object from a client, sending a `Person` object to a client, and closing the server socket.
+
+### Client
+
+The `Client` class contains methods for creating a client socket, sending a `Person` object to a server, receiving a `Person` object from a server, and closing the client socket.
+
+## Example output
+
 Here is an example of the output when running the program:
 
-Copy code
-Received person: John Doe
+
+
