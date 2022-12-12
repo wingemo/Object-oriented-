@@ -1,6 +1,6 @@
-# Objects over a network
+# Objects Over a Network
 
-This program demonstrates how to send and receive objects over a network using Java.
+This program demonstrates how to send and receive objects over a network using Java. Objects over a network is a way of organizing and managing data that is transmitted across a network. This approach is often used in distributed systems, where data is shared and accessed by multiple devices or computers that are connected to the network.
 
 ## Requirements
 
