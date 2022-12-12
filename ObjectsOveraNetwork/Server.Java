@@ -24,10 +24,12 @@ public class Server {
     this.oos = new ObjectOutputStream(socket.getOutputStream());
   }
 
-  public Person receivePerson() throws IOException, ClassNotFoundException {
-    return (Person) ois.readObject();
-  }
-
+ /**
+  * Sends a `Person` object to the client.
+  *
+  * @param person the `Person` object to be sent
+  * @throws IOException if an I/O error occurs while sending the object
+  */
   public void sendPerson(Person person) throws IOException {
     oos.writeObject(person);
   }
