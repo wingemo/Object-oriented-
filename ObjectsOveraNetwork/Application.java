@@ -1,3 +1,8 @@
+/**
+   * The entry point of the application.
+   *
+   * @Philip Wingemo
+   */
 public class Application {
   /**
    * The entry point of the application.
