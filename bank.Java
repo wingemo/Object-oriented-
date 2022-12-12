@@ -59,7 +59,7 @@ class Transaction implements Runnable {
     } else if (type.equals("withdraw")) {
       account.withdraw(amount);
     }
-    System.out.println("Processed transaction for account " + account.getId() + " for the amount of " + amount + ". New balance: " + account.getBalance());
+    System.out.println(account.getId() + " Amount: " + amount + " New balance: " + account.getBalance());
   }
 }
 
