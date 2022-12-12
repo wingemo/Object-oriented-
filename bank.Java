@@ -7,21 +7,29 @@ import java.util.Random;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Bank {
-  public static void main(String[] args) {
-    List<Transaction> transactions = new ArrayList<>();
-    Map<Integer, Account> accounts = new HashMap<>();
-    Scanner scanner = new Scanner(System.in);
-    Random rand = new Random();
+import java.util.*;
+import java.util.concurrent.*;
 
-    System.out.println("Enter the number of transactions: ");
-    int numTransactions = scanner.nextInt();
-    
+public class Bank {
+  List<Transaction> transactions = new ArrayList<>();
+  Map<Integer, Account> accounts = new HashMap<>();
+  Scanner scanner = new Scanner(System.in);
+  Random rand = new Random();
+
+  public Bank() {
+    // Create some accounts with random balances
     for (int i = 0; i < 10; i++) {
       Account account = new Account(i, rand.nextInt(1000));
       accounts.put(i, account);
     }
+  }
 
+  public void runTransactions() {
+    // Get the number of transactions to process
+    System.out.println("Enter the number of transactions: ");
+    int numTransactions = scanner.nextInt();
+
+    // Create the transactions
     for (int i = 0; i < numTransactions; i++) {
       System.out.println("Enter the transaction details (id, type, amount): ");
       String id = scanner.next();
@@ -41,6 +49,7 @@ public class Bank {
     executor.shutdown();
   }
 }
+
 
 class Transaction implements Runnable {
   private Account account;
