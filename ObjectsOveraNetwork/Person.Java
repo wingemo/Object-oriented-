@@ -1,3 +1,6 @@
+/**
+ * Represents a person with a first and last name.
+ */
 class Person {
   // The person's first name
   private String firstName;
