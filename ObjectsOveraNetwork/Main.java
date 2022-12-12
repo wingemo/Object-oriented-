@@ -3,9 +3,9 @@ public class Main {
     Server server = new Server();
     Client client = new Client();
     
-    Person person = client.receivePerson();
     Person personToSend = new Person("John Doe");
     server.sendPerson(personToSend);
+    Person person = client.receivePerson();
     System.out.println("Received person: " + person);
     
     client.close();
