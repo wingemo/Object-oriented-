@@ -4,7 +4,9 @@ import java.net.Socket;
 
 /**
  * A Java client that connects to a server at "localhost" on port 8000, receives
- * a `Person` object from the server, and closes the connection.
+ * a {@link Person} object from the server, and closes the connection.
+ *
+ * @Philip Wingemo
  */
 public class Client {
   // The socket for connecting to the server
