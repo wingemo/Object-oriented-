@@ -13,7 +13,7 @@ To run the program, start the Main by running the following command:
 ```sh
 Java Main
 ```
-The client will send a `Person` object to the server, and the server will respond by sending a different `Person` object back to the client. The names of the received and sent `Person` objects will be printed to the console.
+The server will send a `Person` object to the client. The names of the received and sent `Person` objects will be printed to the console.
 
 ## Code structure
 
