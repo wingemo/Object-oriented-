@@ -17,7 +17,6 @@ public class Bank {
   Random rand = new Random();
 
   public Bank() {
-    // Create some accounts with random balances
     for (int i = 0; i < 10; i++) {
       Account account = new Account(i, rand.nextInt(1000));
       accounts.put(i, account);
@@ -25,11 +24,9 @@ public class Bank {
   }
 
   public void runTransactions() {
-    // Get the number of transactions to process
     System.out.println("Enter the number of transactions: ");
     int numTransactions = scanner.nextInt();
 
-    // Create the transactions
     for (int i = 0; i < numTransactions; i++) {
       System.out.println("Enter the transaction details (id, type, amount): ");
       String id = scanner.next();
@@ -39,13 +36,11 @@ public class Bank {
       transactions.add(new Transaction(type, amount, accounts.get(idAsInt)));
     }
 
-    // Process the transactions in parallel
     ExecutorService executor = Executors.newFixedThreadPool(4);
     for (Transaction transaction : transactions) {
       executor.submit(transaction);
     }
 
-    // Shutdown the executor service
     executor.shutdown();
   }
 }
