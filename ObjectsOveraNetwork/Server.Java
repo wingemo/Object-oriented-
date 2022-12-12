@@ -12,9 +12,24 @@ import java.net.Socket;
  * @Philip Wingemo
  */
 public class Server {
+  /**
+   * The `ServerSocket` used to listen for incoming connections on a specified port.
+   */
   private ServerSocket serverSocket;
+  
+  /**
+   * The `Socket` representing the connection to the client.
+   */
   private Socket socket;
+  
+  /**
+   * The `ObjectInputStream` used to receive objects from the client.
+   */
   private ObjectInputStream ois;
+  
+  /**
+   * The `ObjectOutputStream` used to send objects to the client.
+   */
   private ObjectOutputStream oos;
 
   public Server() throws IOException {
