@@ -3,13 +3,19 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.Random;
 
 public class Bank {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter the number of transactions: ");
     int numTransactions = scanner.nextInt();
-
+    
+    Random rand = new Random();
+    for (int i = 0; i <= 10; i = i + 1) {
+      Account account = new Account(i, rand.nextInt(1000))
+    }
+    
     // Create a list of transactions
     List<Transaction> transactions = new ArrayList<>();
     for (int i = 0; i < numTransactions; i++) {
@@ -43,7 +49,6 @@ class Transaction implements Runnable {
   	this.account = account;
   }
 
-
   public void run() {
     // Process the transaction
     if (type.equals("deposit")) {
@@ -55,13 +60,13 @@ class Transaction implements Runnable {
   }
 }
 
-
 class Account {
   private String id;
   private double balance;
 
-  public Account(String id) {
+  public Account(String id, double balance) {
     this.id = id;
+    this balance = balance;
   }
 
   public void deposit(double amount) {
