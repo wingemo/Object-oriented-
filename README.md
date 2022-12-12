@@ -17,7 +17,11 @@ The client will send a `Person` object to the server, and the server will respon
 
 ## Code structure
 
-The program consists of two classes: `Server` and `Client`.
+The program consists of three classes: `Person`, `Server` and `Client`.
+
+### Person
+
+The `Person` class represents a person with a first and last name. It has constructors and accessor methods for initializing and retrieving the first and last names of the person. The `Person` class can be used in a program to represent a person and access their first and last names.
 
 ### Server
 
