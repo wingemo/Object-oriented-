@@ -1,4 +1,4 @@
-# Example Networking Program
+# Objects over a network
 
 This program demonstrates how to send and receive objects over a network using Java.
 
