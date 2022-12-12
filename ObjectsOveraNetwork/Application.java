@@ -1,6 +1,3 @@
-/**
- * The entry point of the application.
- */
 public class Application {
   /**
    * The entry point of the application.
