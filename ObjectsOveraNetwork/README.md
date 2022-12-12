@@ -8,10 +8,10 @@ This program demonstrates how to send and receive objects over a network using J
 
 ## Running the program
 
-To run the program, start the Main by running the following command:
+To run the program, start the Application by running the following command:
 
 ```sh
-Java Main
+Java Application
 ```
 The server will send a `Person` object to the client. The names of the received and sent `Person` objects will be printed to the console.
 
