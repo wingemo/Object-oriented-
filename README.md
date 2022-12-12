@@ -10,8 +10,9 @@ This program demonstrates how to send and receive objects over a network using J
 
 To run the program, start the Main by running the following command:
 
--- Java Main --
-
+```sh
+Java Main
+```
 The client will send a `Person` object to the server, and the server will respond by sending a different `Person` object back to the client. The names of the received and sent `Person` objects will be printed to the console.
 
 ## Code structure
@@ -30,5 +31,7 @@ The `Client` class contains methods for creating a client socket, sending a `Per
 
 Here is an example of the output when running the program:
 
-
+```sh
+Received person: John Doe
+```
 
