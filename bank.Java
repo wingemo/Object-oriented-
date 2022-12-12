@@ -16,7 +16,6 @@ public class Application {
   }
 }
 
-
 public class Bank {
   List<Transaction> transactions = new ArrayList<>();
   Map<Integer, Account> accounts = new HashMap<>();
