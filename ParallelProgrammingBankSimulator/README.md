@@ -1,4 +1,4 @@
-# Parallel Programming in a Bank Simulator
+# Parallel Programming a Bank Simulator
 
 This is a simple Java application that simulates a bank with multiple transactions.
 
