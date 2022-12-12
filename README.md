@@ -8,7 +8,7 @@ This program demonstrates how to send and receive objects over a network using J
 
 ## Running the program
 
-To run the program, first start the Main by running the following command:
+To run the program, start the Main by running the following command:
 
 -- Java Main --
 
