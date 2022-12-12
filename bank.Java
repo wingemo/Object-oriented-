@@ -6,9 +6,16 @@ import java.util.concurrent.Executors;
 import java.util.Random;
 import java.util.HashMap;
 import java.util.Map;
-
 import java.util.*;
 import java.util.concurrent.*;
+
+public class Application {
+  public static void main(String[] args) {
+    Bank bank = new Bank();
+    bank.runTransactions();
+  }
+}
+
 
 public class Bank {
   List<Transaction> transactions = new ArrayList<>();
