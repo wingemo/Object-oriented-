@@ -17,8 +17,8 @@ public class Client {
   /**
    * Constructs a new `Client` and connects to the server.
    */
-  public Client() {
-    this.socket = new Socket("localhost", 8000);
+  public Client(Properties config) {
+    this.socket = new Socket(config.getProperty("host"), config.getProperty("port"));
     this.ois = new ObjectInputStream(socket.getInputStream());
   }
 
