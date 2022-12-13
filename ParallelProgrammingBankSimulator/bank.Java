@@ -13,6 +13,8 @@ import java.util.concurrent.*;
  * A class representing a bank.
  */
 public class Bank {
+  String promptNumTransactions = "Enter the number of transactions: ";
+  String promptTransactionDetails = "Enter the transaction details (id, type, amount): ";
   List < Transaction > transactions = new ArrayList < > ();
   Map < Integer, Account > accounts = new HashMap < > ();
   Scanner scanner = new Scanner(System.in);
@@ -34,11 +36,11 @@ public class Bank {
    * executor when finished.
    */
   public void runTransactions() {
-    System.out.println("Enter the number of transactions: ");
+    System.out.println(promptNumTransactions);
     int numTransactions = scanner.nextInt();
 
     for (int i = 0; i < numTransactions; i++) {
-      System.out.println("Enter the transaction details (id, type, amount): ");
+      System.out.println(promptTransactionDetails);
       String id = scanner.next();
       int idAsInt = Integer.parseInt(id);
       String type = scanner.next();
