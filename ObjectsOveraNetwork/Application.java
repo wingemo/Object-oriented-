@@ -24,7 +24,7 @@ public class Application {
     Person personToSend = new Person("John Doe");
     server.sendPerson(personToSend);
     Person person = client.receivePerson();
-    System.out.println(config.getProperty("ReceivedPersonMessage") + person);
+    System.out.println(config.getProperty("receivedPersonMessage") + person);
 
     // Close the client and server connections
     client.close();
