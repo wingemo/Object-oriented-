@@ -51,14 +51,12 @@ public class Server {
 
   
  /**
-  * Closes the input and output streams and the `Socket` and `ServerSocket` used by this `Server`.
+  * Closes the output streams and the `ServerSocket` used by this `Server`.
   *
-  * @throws IOException if an I/O error occurs while closing the streams or sockets
+  * @throws IOException if an I/O error occurs while closing the stream or socket
   */
   public void close() throws IOException {
-    ois.close();
     oos.close();
-    socket.close();
     serverSocket.close();
   }
 }
