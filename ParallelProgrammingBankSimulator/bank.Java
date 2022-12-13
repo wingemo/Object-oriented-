@@ -13,11 +13,34 @@ import java.util.concurrent.*;
  * A class representing a bank.
  */
 public class Bank {
+  /**
+   * Prompts the user to enter the number of transactions.
+   */
   String promptNumTransactions = "Enter the number of transactions: ";
+
+  /**
+   * Prompts the user to enter the details of a transaction.
+   */
   String promptTransactionDetails = "Enter the transaction details (id, type, amount): ";
+
+  /**
+   * A list of transactions.
+   */
   List < Transaction > transactions = new ArrayList < > ();
+
+  /**
+   * A map of accounts, with the account id as the key.
+   */
   Map < Integer, Account > accounts = new HashMap < > ();
+
+  /**
+   * A scanner for reading user input.
+   */
   Scanner scanner = new Scanner(System.in);
+
+  /**
+   * A random number generator.
+   */
   Random rand = new Random();
 
   /**
