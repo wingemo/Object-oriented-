@@ -30,15 +30,19 @@ public class Bank {
     }
   }
 
-  /**
-   * Runs the bank simulation by prompting the user for the number of transactions,
-   * processing the transactions using multiple threads, and shutting down the thread
-   * executor when finished.
-   */
   public void runTransactions() {
-    System.out.println(promptNumTransactions);
-    int numTransactions = scanner.nextInt();
+    int numTransactions = promptNumTransactions();
+    List < Transaction > transactions = processTransactions(numTransactions);
+    executeTransactions(transactions);
+  }
 
+  private int promptNumTransactions() {
+    System.out.println(promptNumTransactions);
+    return scanner.nextInt();
+  }
+
+  private List < Transaction > processTransactions(int numTransactions) {
+    List < Transaction > transactions = new ArrayList < > ();
     for (int i = 0; i < numTransactions; i++) {
       System.out.println(promptTransactionDetails);
       String id = scanner.next();
@@ -47,7 +51,10 @@ public class Bank {
       double amount = scanner.nextDouble();
       transactions.add(new Transaction(type, amount, accounts.get(idAsInt)));
     }
+    return transactions;
+  }
 
+  private void executeTransactions(List < Transaction > transactions) {
     ExecutorService executor = Executors.newFixedThreadPool(4);
     for (Transaction transaction: transactions) {
       executor.submit(transaction);
@@ -55,4 +62,3 @@ public class Bank {
 
     executor.Shutdown();
   }
-}
