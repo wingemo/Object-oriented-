@@ -24,18 +24,10 @@ public class Application {
    * @throws IOException if an error occurs while reading the configuration file
    */
   public static void main(String[] args) throws IOException, ClassNotFoundException {
+    ExecutorService executorService = Executors.newFixedThreadPool(2);
     Properties config = readConfig(CONFIG_PATH);
-    Server server = new Server(config);
-    Client client = new Client(config);
-    Person personToSend = new Person(
-            config.getProperty("firstName", ""),
-            config.getProperty("lastName", ""),
-            config.getProperty("income", ""),
-            config.getProperty("netIncome", "")
-    );
-    server.sendPerson(personToSend);
-    Person person = client.receivePerson();
-    System.out.println(String.format(config.getProperty("receivedPersonMessage"), person));
+    executorService.submit(new Server(config));
+    executorService.submit(new Client(config));
   }
 
   /**
