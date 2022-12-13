@@ -13,12 +13,15 @@ public class Client {
   private Socket socket;
   // The object input stream for reading the `Person` object from the server
   private ObjectInputStream ois;
+  
+  private Int taxRate;
 
   /**
    * Constructs a new `Client` and connects to the server.
    */
   public Client(Properties config) {
     this.socket = new Socket(config.getProperty("host"), config.getProperty("port"));
+    this.taxRate = config.getProperty("taxRate");
     this.ois = new ObjectInputStream(socket.getInputStream());
   }
 
