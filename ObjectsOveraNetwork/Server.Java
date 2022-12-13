@@ -63,13 +63,14 @@ public class Server {
     serverSocket.close();
   }
   
-    Person personToSend = new Person(
+  
+  public void run() {
+     Person personToSend = new Person(
             config.getProperty("firstName", ""),
             config.getProperty("lastName", ""),
             config.getProperty("income", ""),
             config.getProperty("netIncome", "")
     );
     server.sendPerson(personToSend);
-
-  
+  }
 }
