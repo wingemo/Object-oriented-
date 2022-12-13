@@ -12,17 +12,17 @@ class Person {
   private double netIncome;
 
   /**
-   * Constructs a new `Person` with the given first and last name and income.
+   * Constructs a new {@code Person} with the given first name, last name, and income.
    *
    * @param firstName the person's first name
    * @param lastName the person's last name
    * @param income the person's income
    */
-  public Person(String firstName, String lastName, double income) {
+  public Person(String firstName, String lastName, double income, double netIncome) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.income = income;
-    this.netIncome = 0;
+    this.netIncome = netIncome;
   }
 
   /**
