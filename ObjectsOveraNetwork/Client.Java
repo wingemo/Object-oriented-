@@ -14,7 +14,7 @@ public class Client {
   // The object input stream for reading the `Person` object from the server
   private ObjectInputStream ois;
   
-  private Int taxRate;
+  private int taxRate;
 
   /**
    * Constructs a new `Client` and connects to the server.
