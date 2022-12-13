@@ -34,7 +34,7 @@ public class Client {
    */
   public Person receivePerson() throws IOException, ClassNotFoundException {
     Person person = (Person) ois.readObject;
-    person.get
+    person.setNetIncome(
     return (Person) ois.readObject();
   }
 
