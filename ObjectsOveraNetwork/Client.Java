@@ -1,6 +1,9 @@
+package com.wingemo;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.util.Properties;
 
 /**
  * A Java client that connects to a server at "localhost" on port 8000, receives
@@ -21,23 +24,22 @@ public class Client {
    *
    * @param config a Properties object containing the host, port, and taxRate to use for the client
    */
-  public Client(Properties config) {
-    this.socket = new Socket(config.getProperty("host"), config.getProperty("port"));
-    this.taxRate = config.getProperty("taxRate");
+  public Client(Properties config) throws IOException {
+    this.socket = new Socket(config.getProperty("host"), Integer.parseInt(config.getProperty("port")));
+    this.taxRate = Integer.parseInt(config.getProperty("taxRate"));
     this.ois = new ObjectInputStream(socket.getInputStream());
   }
 
   /**
    * Reads a {@link Person} object from an {@link ObjectInputStream} and applies a tax rate to the person's income.
    *
-   * @param ois the {@link ObjectInputStream} to read from
    * @return the modified {@link Person} object
    * @throws IOException if there is an error reading from the {@link ObjectInputStream}
    * @throws ClassNotFoundException if the {@link Person} class cannot be found
    */
-  public Person receivePerson(ObjectInputStream ois) throws IOException, ClassNotFoundException {
-      Person person = (Person) ois.readObject;
-      person.setNetIncome(taxRate * person.getIncome);
+  public Person receivePerson() throws IOException, ClassNotFoundException {
+      Person person = (Person) ois.readObject();
+      person.setNetIncome(taxRate * person.getIncome());
       return person;
   }
 
