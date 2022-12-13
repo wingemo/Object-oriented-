@@ -7,7 +7,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Properties;
 
-
 /**
  * A simple server class that listens for incoming connections on port,
  * writes serialized {@link Person} objects to the connected client.
@@ -19,12 +18,12 @@ public class Server {
    * The `ServerSocket` used to listen for incoming connections on a specified port.
    */
   private ServerSocket serverSocket;
-  
+
   /**
    * The `Socket` representing the connection to the client.
    */
   private Socket socket;
-  
+
   /**
    * The `ObjectOutputStream` used to send objects to the client.
    */
@@ -42,34 +41,32 @@ public class Server {
     this.oos = new ObjectOutputStream(socket.getOutputStream());
   }
 
- /**
-  * Sends a `Person` object to the client.
-  *
-  * @param person the `Person` object to be sent
-  * @throws IOException if an I/O error occurs while sending the object
-  */
+  /**
+   * Sends a `Person` object to the client.
+   *
+   * @param person the `Person` object to be sent
+   * @throws IOException if an I/O error occurs while sending the object
+   */
   public void sendPerson(Person person) throws IOException {
     oos.writeObject(person);
   }
 
-  
- /**
-  * Closes the output streams and the `ServerSocket` used by this `Server`.
-  *
-  * @throws IOException if an I/O error occurs while closing the stream or socket
-  */
+  /**
+   * Closes the output streams and the `ServerSocket` used by this `Server`.
+   *
+   * @throws IOException if an I/O error occurs while closing the stream or socket
+   */
   public void close() throws IOException {
     oos.close();
     serverSocket.close();
   }
-  
-  
+
   public void run() {
-     Person personToSend = new Person(
-            config.getProperty("firstName", ""),
-            config.getProperty("lastName", ""),
-            config.getProperty("income", ""),
-            config.getProperty("netIncome", "")
+    Person personToSend = new Person(
+      config.getProperty("firstName", ""),
+      config.getProperty("lastName", ""),
+      config.getProperty("income", ""),
+      config.getProperty("netIncome", "")
     );
     server.sendPerson(personToSend);
   }
