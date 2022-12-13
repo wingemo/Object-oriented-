@@ -17,10 +17,6 @@ The code consists of three classes: `Application`, `Bank`, and `Account`. The `A
 
 The `Transaction` class implements the `Runnable` interface, which means that it can be executed by a thread. The `run` method of the `Transaction` class processes the transaction by calling the `deposit` or `withdraw` method of the `Account` object, depending on the type of the transaction. It also prints the ID, amount, and new balance of the account after the transaction is processed.
 
-## Limitations
-
-This is a simple simulation of a bank and is not intended for use in a real-world banking system. It does not include features such as authentication, security, or error handling. It is intended for educational purposes only.
-
 ## Configuration file
 
 This is a configuration file it contains several parameters that control the behavior of the system.
@@ -32,3 +28,8 @@ The `promptTransactionDetails` parameter specifies the message that should be di
 The `newFixedThreadPool` parameter specifies the number of threads that should be used in the thread pool for processing transactions.
 
 The `accounts` parameter specifies the number of accounts that are being tracked by the system.
+
+## Limitations
+
+This is a simple simulation of a bank and it does not include features such as authentication, security, or error handling. 
+
