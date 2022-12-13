@@ -8,7 +8,12 @@ public class Application {
    * @param args command-line arguments
    */
   public static void main(String[] args) {
-    Bank bank = new Bank();
+    Map<String, String> config = readConfig("/path/to/config/file");
+    Bank bank = new Bank(config);
     bank.runTransactions();
   }
+  
+  public static Map<String, String> readConfig(String configPath) {
+  // Read the configuration file and return the values as a map
+}
 }
