@@ -1,3 +1,5 @@
+package com.wingemo;
+
 /**
  * Represents a person with a first and last name, income, and net income after taxes.
  */
@@ -13,16 +15,17 @@ class Person {
 
   /**
    * Constructs a new {@code Person} with the given first name, last name, income, and net income.
+   *
    * @param firstName the first name of the person
-   * @param lastName the last name of the person
-   * @param income the income of the person
+   * @param lastName  the last name of the person
+   * @param income    the income of the person
    * @param netIncome the net income of the person
    */
-  public Person(String firstName, String lastName, double income, double netIncome) {
+  public Person(String firstName, String lastName, String income, String netIncome) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.income = income;
-    this.netIncome = netIncome;
+    this.income = Double.parseDouble(income);
+    this.netIncome = Double.parseDouble(netIncome);
   }
 
   /**
@@ -105,9 +108,10 @@ class Person {
   @Override
   public String toString() {
     return "Person{" +
-      "firstName='" + firstName + '\'' +
-      ", lastName='" + lastName + '\'' +
-      ", income=" + income +
-      ", netIncome=" + netIncome +
-      '}';
+            "firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", income=" + income +
+            ", netIncome=" + netIncome +
+            '}';
   }
+}
