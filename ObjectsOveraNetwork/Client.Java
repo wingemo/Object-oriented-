@@ -7,7 +7,7 @@ import java.util.Properties;
 
 /**
  * A Java lient that connects to a server and receives a Person object from the server.
- * The client then applies a tax rate to the person's income, 
+ * The client then applies a tax rate to the person's income,
  * and prints a message to the console with the modified Person object.
  *
  * @Philip Wingemo
@@ -18,7 +18,7 @@ public class Client implements Runnable {
   // The object input stream for reading the `Person` object from the server
   private ObjectInputStream ois;
   // The tax rate to use for calculating taxes.
-  private int taxRate;
+  private double taxRate;
 
   private Properties config;
 
@@ -30,7 +30,7 @@ public class Client implements Runnable {
   public Client(Properties config) throws IOException {
     this.config = config;
     this.socket = new Socket(config.getProperty("host"), Integer.parseInt(config.getProperty("port")));
-    this.taxRate = Integer.parseInt(config.getProperty("taxRate"));
+    this.taxRate = Double.parseDouble(config.getProperty("taxRate"));
     this.ois = new ObjectInputStream(socket.getInputStream());
   }
 
@@ -58,7 +58,14 @@ public class Client implements Runnable {
   }
 
   public void run() {
-    Person person = receivePerson();
-    System.out.println(String.format(config.getProperty("receivedPersonMessage"), person));
+    Person person = null;
+    try {
+      person = receivePerson();
+      System.out.print(person);
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    }
   }
 }
