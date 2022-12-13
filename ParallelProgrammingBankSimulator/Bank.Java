@@ -46,7 +46,9 @@ public class Bank {
   /**
    * Constructs a new Bank with 10 accounts with random initial balances.
    */
-  public Bank() {
+  public Bank(Map<String, String> config) {
+    this.numAccounts = Integer.parseInt(config.get("numAccounts"));
+    this.numTransactions = Integer.parseInt(config.get("numTransactions"));
     for (int i = 0; i < 10; i++) {
       Account account = new Account(i, rand.nextInt(1000));
       accounts.put(i, account);
