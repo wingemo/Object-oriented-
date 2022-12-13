@@ -57,6 +57,12 @@ public class Client implements Runnable {
     socket.close();
   }
 
+  /**
+   * Receives a person object, prints it to the standard output.
+   *
+   * @throws IOException if an I/O error occurs while receiving the person object
+   * @throws ClassNotFoundException if the class of the serialized person object cannot be found
+   */
   public void run() {
     Person person = null;
     try {
