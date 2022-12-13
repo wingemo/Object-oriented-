@@ -14,6 +14,18 @@ public class Application {
   }
   
   public static Map<String, String> readConfig(String configPath) {
-  // Read the configuration file and return the values as a map
+  Map<String, String> config = new HashMap<>();
+  try (BufferedReader reader = new BufferedReader(new FileReader(configPath))) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+      String[] parts = line.split("=");
+      String key = parts[0];
+      String value = parts[1];
+      config.put(key, value);
+    }
+  } catch (IOException e) {
+    System.err.println("Failed to read config file: " + e.getMessage());
+  }
+  return config;
 }
 }
