@@ -1,8 +1,12 @@
+package com.wingemo;
+
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Properties;
+
+import static java.lang.Integer.parseInt;
 
 /**
  * A simple server class that listens for incoming connections on port,
@@ -33,9 +37,8 @@ public class Server {
    * @throws IOException if an error occurs while creating the server socket
    */
   public Server(Properties config) throws IOException {
-    this.serverSocket = new ServerSocket(config.getProperty("port"));
+    this.serverSocket = new ServerSocket(parseInt(config.getProperty("port")));
     this.socket = serverSocket.accept();
-    this.ois = new ObjectInputStream(socket.getInputStream());
     this.oos = new ObjectOutputStream(socket.getOutputStream());
   }
 
