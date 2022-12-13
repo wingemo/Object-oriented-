@@ -52,14 +52,7 @@ public class Client {
     ois.close();
     socket.close();
   }
-  
-    Person personToSend = new Person(
-            config.getProperty("firstName", ""),
-            config.getProperty("lastName", ""),
-            config.getProperty("income", ""),
-            config.getProperty("netIncome", "")
-    );
-    
+ 
   receivePerson();
     System.out.println(String.format(config.getProperty("receivedPersonMessage"), person));
   
