@@ -48,4 +48,31 @@ class Person {
   public double getIncome() {
     return income;
   }
+
+  /**
+   * Set the person's first name.
+   *
+   * @param firstName The person's first name
+   */
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  /**
+   * Set the person's last name.
+   *
+   * @param lastName The person's last name
+   */
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  /**
+   * Set the person's income.
+   *
+   * @param income The person's income
+   */
+  public void setIncome(double income) {
+    this.income = income;
+  }
 }
