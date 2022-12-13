@@ -52,6 +52,11 @@ class Person {
     return income;
   }
 
+  /**
+   * Returns the income of the person.
+   *
+   * @return the income of the person.
+   */
   public double getIncome() {
     return income;
   }
@@ -83,6 +88,11 @@ class Person {
     this.income = income;
   }
 
+  /**
+   * Sets the net income of the person.
+   *
+   * @param netIncome the new net income of the person.
+   */
   public void setNetIncome(double netIncome) {
     this.firstName = firstName;
   }
