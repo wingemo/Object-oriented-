@@ -13,7 +13,7 @@ import java.util.Properties;
  *
  * @Philip Wingemo
  */
-public class Server {
+public class Server implements Runnable {
   /**
    * The `ServerSocket` used to listen for incoming connections on a specified port.
    */
