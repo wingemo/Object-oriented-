@@ -29,18 +29,32 @@ public class Bank {
       accounts.put(i, account);
     }
   }
-
+  
+  /**
+   * Prompts the user for the number of transactions to process,
+   * processes the transactions, and executes them.
+   */
   public void runTransactions() {
     int numTransactions = promptNumTransactions();
     List < Transaction > transactions = processTransactions(numTransactions);
     executeTransactions(transactions);
   }
 
+  /**
+ * Prompts the user for the number of transactions to process.
+ * @return The number of transactions to process.
+ */
   private int promptNumTransactions() {
     System.out.println(promptNumTransactions);
     return scanner.nextInt();
   }
 
+  
+  /**
+ * Processes the given number of transactions.
+ * @param numTransactions The number of transactions to process.
+ * @return A list of processed transactions.
+ */
   private List < Transaction > processTransactions(int numTransactions) {
     List < Transaction > transactions = new ArrayList < > ();
     for (int i = 0; i < numTransactions; i++) {
