@@ -29,6 +29,8 @@ public class Server implements Runnable {
    */
   private ObjectOutputStream oos;
 
+  private Properties config;
+
   /**
    * Creates a new Server instance.
    *
@@ -36,9 +38,8 @@ public class Server implements Runnable {
    * @throws IOException if an error occurs while creating the server socket
    */
   public Server(Properties config) throws IOException {
+    this.config = config;
     this.serverSocket = new ServerSocket(parseInt(config.getProperty("port")));
-    this.socket = serverSocket.accept();
-    this.oos = new ObjectOutputStream(socket.getOutputStream());
   }
 
   /**
@@ -48,6 +49,7 @@ public class Server implements Runnable {
    * @throws IOException if an I/O error occurs while sending the object
    */
   public void sendPerson(Person person) throws IOException {
+    this.oos = new ObjectOutputStream(socket.getOutputStream());
     oos.writeObject(person);
   }
 
@@ -61,13 +63,29 @@ public class Server implements Runnable {
     serverSocket.close();
   }
 
+ /**
+  * Runs the server socket in a loop and accepts incoming connections.
+  * If a connection is established, a new {@link Person} is created using the
+  * configuration properties "firstName", "lastName", "income", and "taxRate",
+  * and the person is sent using the {@link #sendPerson(Person)} method.
+  * If an IOException occurs, it is printed to the standard error output.
+ */
   public void run() {
-    Person personToSend = new Person(
-      config.getProperty("firstName", ""),
-      config.getProperty("lastName", ""),
-      config.getProperty("income", ""),
-      config.getProperty("netIncome", "")
-    );
-    server.sendPerson(personToSend);
+    while (true) {
+      try {
+        this.socket = serverSocket.accept();
+        if (this.socket.isConnected()) {
+          Person personToSend = new Person(
+            config.getProperty("firstName"),
+            config.getProperty("lastName"),
+            config.getProperty("income"),
+            config.getProperty("taxRate"));
+          sendPerson(personToSend);
+          break;
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
   }
 }
