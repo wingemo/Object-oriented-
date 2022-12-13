@@ -12,11 +12,11 @@ class Person {
   private double netIncome;
 
   /**
-   * Constructs a new {@code Person} with the given first name, last name, and income.
-   *
-   * @param firstName the person's first name
-   * @param lastName the person's last name
-   * @param income the person's income
+   * Constructs a new {@code Person} with the given first name, last name, income, and net income.
+   * @param firstName the first name of the person
+   * @param lastName the last name of the person
+   * @param income the income of the person
+   * @param netIncome the net income of the person
    */
   public Person(String firstName, String lastName, double income, double netIncome) {
     this.firstName = firstName;
