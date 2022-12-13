@@ -25,17 +25,18 @@ public class Client {
     this.ois = new ObjectInputStream(socket.getInputStream());
   }
 
-  /**
-   * Receives a `Person` object from the server.
+   /**
+   * Reads a {@link Person} object from an {@link ObjectInputStream} and applies a tax rate to the person's income.
    *
-   * @return the `Person` object received from the server
-   * @throws IOException if an I/O error occurs
-   * @throws ClassNotFoundException if the class of the serialized object cannot be found
+   * @param ois the {@link ObjectInputStream} to read from
+   * @return the modified {@link Person} object
+   * @throws IOException if there is an error reading from the {@link ObjectInputStream}
+   * @throws ClassNotFoundException if the {@link Person} class cannot be found
    */
-  public Person receivePerson() throws IOException, ClassNotFoundException {
-    Person person = (Person) ois.readObject;
-    person.setNetIncome(taxRate * person.getIncome);
-    return person;
+  public Person receivePerson(ObjectInputStream ois) throws IOException, ClassNotFoundException {
+      Person person = (Person) ois.readObject;
+      person.setNetIncome(taxRate * person.getIncome);
+      return person;
   }
 
   /**
