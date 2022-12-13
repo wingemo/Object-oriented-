@@ -1,12 +1,12 @@
 package com.wingemo;
 
+import static java.lang.Integer.parseInt;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Properties;
 
-import static java.lang.Integer.parseInt;
 
 /**
  * A simple server class that listens for incoming connections on port,
