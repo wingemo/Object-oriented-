@@ -13,11 +13,13 @@ public class Client {
   private Socket socket;
   // The object input stream for reading the `Person` object from the server
   private ObjectInputStream ois;
-  
+  // The tax rate to use for calculating taxes.
   private int taxRate;
 
   /**
-   * Constructs a new `Client` and connects to the server.
+   * Creates a new Client instance.
+   *
+   * @param config a Properties object containing the host, port, and taxRate to use for the client
    */
   public Client(Properties config) {
     this.socket = new Socket(config.getProperty("host"), config.getProperty("port"));
@@ -25,7 +27,7 @@ public class Client {
     this.ois = new ObjectInputStream(socket.getInputStream());
   }
 
-   /**
+  /**
    * Reads a {@link Person} object from an {@link ObjectInputStream} and applies a tax rate to the person's income.
    *
    * @param ois the {@link ObjectInputStream} to read from
