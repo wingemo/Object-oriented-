@@ -29,7 +29,7 @@ public class Bank {
       accounts.put(i, account);
     }
   }
-  
+
   /**
    * Prompts the user for the number of transactions to process,
    * processes the transactions, and executes them.
@@ -41,20 +41,19 @@ public class Bank {
   }
 
   /**
- * Prompts the user for the number of transactions to process.
- * @return The number of transactions to process.
- */
+   * Prompts the user for the number of transactions to process.
+   * @return The number of transactions to process.
+   */
   private int promptNumTransactions() {
     System.out.println(promptNumTransactions);
     return scanner.nextInt();
   }
 
-  
   /**
- * Processes the given number of transactions.
- * @param numTransactions The number of transactions to process.
- * @return A list of processed transactions.
- */
+   * Processes the given number of transactions.
+   * @param numTransactions The number of transactions to process.
+   * @return A list of processed transactions.
+   */
   private List < Transaction > processTransactions(int numTransactions) {
     List < Transaction > transactions = new ArrayList < > ();
     for (int i = 0; i < numTransactions; i++) {
@@ -68,6 +67,11 @@ public class Bank {
     return transactions;
   }
 
+  /**
+   * Executes a given list of transactions concurrently using a thread pool.
+   *
+   * @param transactions The list of transactions to be executed.
+   */
   private void executeTransactions(List < Transaction > transactions) {
     ExecutorService executor = Executors.newFixedThreadPool(4);
     for (Transaction transaction: transactions) {
