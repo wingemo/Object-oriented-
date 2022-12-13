@@ -6,8 +6,9 @@ This is a simple Java application that simulates a bank with multiple transactio
 
 To run the application, you need to have the Java Development Kit (JDK) installed on your system. You can then compile and run the `Application` class, which will create a `Bank` object and run the transactions.
 
-javac Application.java
-java Application
+```sh
+Java Application
+```
 
 When the application starts, it will ask you to enter the number of transactions you want to run. After that, you will be prompted to enter the details of each transaction (ID, type, and amount). The transactions will be processed in parallel using a fixed-size thread pool with 4 threads.
 
