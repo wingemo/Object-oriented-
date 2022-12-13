@@ -8,7 +8,7 @@ class Person {
   private String lastName;
   // The person's income
   private double income;
-
+  //The person's net income after taxes.
   private double netIncome;
 
   /**
