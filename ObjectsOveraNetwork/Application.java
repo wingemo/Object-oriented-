@@ -25,17 +25,14 @@ public class Application {
    */
   public static void main(String[] args) throws IOException, ClassNotFoundException {
     Properties config = readConfig(CONFIG_PATH);
-
     Server server = new Server(config);
     Client client = new Client(config);
-
     Person personToSend = new Person(
             config.getProperty("firstName", ""),
             config.getProperty("lastName", ""),
             config.getProperty("income", ""),
             config.getProperty("netIncome", "")
     );
-
     server.sendPerson(personToSend);
     Person person = client.receivePerson();
     System.out.println(String.format(config.getProperty("receivedPersonMessage"), person));
