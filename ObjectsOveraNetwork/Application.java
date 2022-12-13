@@ -28,6 +28,7 @@ public class Application {
     ExecutorService executorService = Executors.newFixedThreadPool(2);
     executorService.submit(new Server(config));
     executorService.submit(new Client(config));
+    executorService.shutdown();
   }
 
   /**
