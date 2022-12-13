@@ -7,9 +7,6 @@
 public class Application {
   /**
    * Represents the path to the configuration properties file.
-   *
-   * The configuration file contains important settings for the application.
-   *
    */
   public static final String CONFIG_PATH = "config.properties";
 
