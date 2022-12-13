@@ -32,5 +32,3 @@ The `promptTransactionDetails` parameter specifies the message that should be di
 The `newFixedThreadPool` parameter specifies the number of threads that should be used in the thread pool for processing transactions.
 
 The `accounts` parameter specifies the number of accounts that are being tracked by the system.
-
-Overall, this configuration file allows for customization of the transaction processing system to suit the needs of the user.
