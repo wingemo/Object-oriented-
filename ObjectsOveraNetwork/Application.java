@@ -13,7 +13,7 @@ public class Application {
    */
   public static void main(String[] args) throws IOException {
     // Read the configuration file
-    String CONFIG_PATH = "config.properties";
+    public static final String CONFIG_PATH = "config.properties";
     Properties config = readConfig(configPath);
 
     // Create a new server and client
@@ -24,7 +24,7 @@ public class Application {
     Person personToSend = new Person("John Doe");
     server.sendPerson(personToSend);
     Person person = client.receivePerson();
-    System.out.println("Received person: " + person);
+    System.out.println("ReceivedPersonMessage: " + person);
 
     // Close the client and server connections
     client.close();
