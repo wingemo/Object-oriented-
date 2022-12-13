@@ -33,10 +33,10 @@ public class Server {
   private ObjectOutputStream oos;
 
   /**
-   * Creates a new `Server` instance that listens for incoming connections on port 8000,
-   * and creates input and output streams for sending and receiving objects.
+   * Creates a new Server instance.
    *
-   * @throws IOException if an I/O error occurs while creating the `ServerSocket` or the streams
+   * @param config a Properties object containing the port to use for the server
+   * @throws IOException if an error occurs while creating the server socket
    */
   public Server(Properties config) throws IOException {
     this.serverSocket = new ServerSocket(config.getProperty("port"));
