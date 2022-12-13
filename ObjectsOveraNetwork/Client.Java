@@ -32,7 +32,7 @@ public class Client {
    * @throws IOException if an I/O error occurs
    * @throws ClassNotFoundException if the class of the serialized object cannot be found
    */
-  public Person receivePerson() throws IOException, ClassNotFoundException {
+  public double receivePerson() throws IOException, ClassNotFoundException {
     return (Person) ois.readObject();
   }
 
