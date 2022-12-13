@@ -9,19 +9,18 @@ import java.util.Map;
 import java.util.*;
 import java.util.concurrent.*;
 
-public class Application {
-  public static void main(String[] args) {
-    Bank bank = new Bank();
-    bank.runTransactions();
-  }
-}
-
+/**
+ * A class representing a bank.
+ */
 public class Bank {
-  List<Transaction> transactions = new ArrayList<>();
-  Map<Integer, Account> accounts = new HashMap<>();
+  List < Transaction > transactions = new ArrayList < > ();
+  Map < Integer, Account > accounts = new HashMap < > ();
   Scanner scanner = new Scanner(System.in);
   Random rand = new Random();
 
+  /**
+   * Constructs a new Bank with 10 accounts with random initial balances.
+   */
   public Bank() {
     for (int i = 0; i < 10; i++) {
       Account account = new Account(i, rand.nextInt(1000));
@@ -29,6 +28,11 @@ public class Bank {
     }
   }
 
+  /**
+   * Runs the bank simulation by prompting the user for the number of transactions,
+   * processing the transactions using multiple threads, and shutting down the thread
+   * executor when finished.
+   */
   public void runTransactions() {
     System.out.println("Enter the number of transactions: ");
     int numTransactions = scanner.nextInt();
@@ -43,73 +47,10 @@ public class Bank {
     }
 
     ExecutorService executor = Executors.newFixedThreadPool(4);
-    for (Transaction transaction : transactions) {
+    for (Transaction transaction: transactions) {
       executor.submit(transaction);
     }
 
-    executor.shutdown();
+    executor.Shutdown();
   }
 }
-
-
-class Transaction implements Runnable {
-  private Account account;
-  private double amount;
-
-  public Transaction(String type, double amount, Account account) {
-  	this.type = type;
-  	this.amount = amount;
-  	this.account = account;
-  }
-
-  public void run() {
-    // Process the transaction
-    if (type.equals("deposit")) {
-      account.deposit(amount);
-    } else if (type.equals("withdraw")) {
-      account.withdraw(amount);
-    }
-    System.out.println(account.getId() + " Amount: " + amount + " New balance: " + account.getBalance());
-  }
-}
-
-class Account {
-  private int id;
-  private double balance;
-
-  public Account(int id, double balance) {
-    this.id = id;
-    this.balance = balance;
-  }
-
-  public void deposit(double amount) {
-    balance += amount;
-  }
-
-  public void withdraw(double amount) {
-    balance -= amount;
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public double getBalance() {
-    return balance;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Account account = (Account) o;
-    return id == account.id &&
-           Double.compare(account.balance, balance) == 0;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, balance);
-  }
-}
-
