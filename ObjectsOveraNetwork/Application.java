@@ -21,7 +21,7 @@ public class Application {
     Client client = new Client(config);
 
     // Create a new person and send it from the server to the client
-    Person personToSend = new Person("John Doe");
+    Person personToSend = new Person(config.getProperty("firstName"), config.getProperty("lastName"), config.getProperty("income"));
     server.sendPerson(personToSend);
     Person person = client.receivePerson();
     System.out.println(config.getProperty("receivedPersonMessage") + person);
