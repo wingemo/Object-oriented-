@@ -22,6 +22,7 @@ class Person {
     this.firstName = firstName;
     this.lastName = lastName;
     this.income = income;
+    this.netIncome = 0;
   }
 
   /**
@@ -85,4 +86,18 @@ class Person {
   public void setNetIncome(double netIncome) {
     this.firstName = firstName;
   }
-}
+
+  /**
+   * Returns a string representation of the `Person` object.
+   *
+   * @return a string representation of the `Person` object
+   */
+  @Override
+  public String toString() {
+    return "Person{" +
+      "firstName='" + firstName + '\'' +
+      ", lastName='" + lastName + '\'' +
+      ", income=" + income +
+      ", netIncome=" + netIncome +
+      '}';
+  }
