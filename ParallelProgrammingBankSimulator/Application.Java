@@ -11,8 +11,10 @@ public class Application {
    * @param args command-line arguments
    */
   public static void main(String[] args) {
+    String CONFIG_PATH = "config.properties";
+    
     // Create a new server and client
-    Properties prop = readConfig("/path/to/config/file");
+    Properties prop = readConfig(CONFIG_PATH);
     Server server = new Server();
     Client client = new Client();
 
@@ -35,7 +37,7 @@ public class Application {
    * @throws IOException if an error occurs while reading the file
    */
   public static Properties readConfig(String configPath) {
-    try (InputStream input = new FileInputStream("config.properties")) {
+    try (InputStream input = new FileInputStream(configPath)) {
       Properties prop = new Properties();
       prop.load(input);
       return prop;
