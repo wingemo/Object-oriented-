@@ -6,29 +6,33 @@
  */
 public class Application {
   /**
+   * Represents the path to the configuration properties file.
+   *
+   * The configuration file contains important settings for the application.
+   *
+   */
+  public static final String CONFIG_PATH = "config.properties";
+
+  /**
    * The entry point of the application.
    *
    * @param args command-line arguments
    * @throws IOException if an error occurs while reading the configuration file
    */
   public static void main(String[] args) throws IOException {
-    // Read the configuration file
-    public static final String CONFIG_PATH = "config.properties";
-    Properties config = readConfig(configPath);
-
-    // Create a new server and client
-    Server server = new Server(config);
-    Client client = new Client(config);
-
-    // Create a new person and send it from the server to the client
-    Person personToSend = new Person(config.getProperty("firstName"), config.getProperty("lastName"), config.getProperty("income"));
-    server.sendPerson(personToSend);
-    Person person = client.receivePerson();
-    System.out.println(config.getProperty("receivedPersonMessage") + person);
-
-    // Close the client and server connections
-    client.close();
-    server.close();
+    Properties config = readConfig();
+    try (Server server = new Server(config)) {
+      try (Client client = new Client(config)) {
+        Person personToSend = new Person(
+          config.getProperty("firstName", ""),
+          config.getProperty("lastName", ""),
+          config.getProperty("income", "")
+        );
+        server.sendPerson(personToSend);
+        Person person = client.receivePerson();
+        System.out.println(String.format(config.getProperty("receivedPersonMessage"), person));
+      }
+    }
   }
 
   /**
