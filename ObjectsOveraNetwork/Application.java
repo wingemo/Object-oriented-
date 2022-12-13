@@ -1,22 +1,24 @@
 /**
  * This program demonstrates how to send and receive 
- * objects over a network using Java
+ * objects over a network using Java.
  *
- * @Philip Wingemo
+ * @author Philip Wingemo
  */
 public class Application {
   /**
    * The entry point of the application.
    *
    * @param args command-line arguments
+   * @throws IOException if an error occurs while reading the configuration file
    */
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
+    // Read the configuration file
     String CONFIG_PATH = "config.properties";
+    Properties config = readConfig(configPath);
 
     // Create a new server and client
-    Properties prop = readConfig(CONFIG_PATH);
-    Server server = new Server();
-    Client client = new Client();
+    Server server = new Server(config);
+    Client client = new Client(config);
 
     // Create a new person and send it from the server to the client
     Person personToSend = new Person("John Doe");
@@ -36,13 +38,11 @@ public class Application {
    * @return a {@code Properties} object containing the configuration properties
    * @throws IOException if an error occurs while reading the file
    */
-  public static Properties readConfig(String configPath) {
+  public static Properties readConfig(String configPath) throws IOException {
     try (InputStream input = new FileInputStream(configPath)) {
       Properties prop = new Properties();
       prop.load(input);
       return prop;
-    } catch (IOException ex) {
-      ex.printStackTrace();
     }
   }
 }
