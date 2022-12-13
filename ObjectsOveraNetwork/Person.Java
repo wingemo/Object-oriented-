@@ -9,6 +9,8 @@ class Person {
   // The person's income
   private double income;
 
+  private double netIncome;
+
   /**
    * Constructs a new `Person` with the given first and last name and income.
    *
@@ -45,6 +47,10 @@ class Person {
    *
    * @return the person's income
    */
+  public double netIncome() {
+    return income;
+  }
+
   public double getIncome() {
     return income;
   }
@@ -74,5 +80,9 @@ class Person {
    */
   public void setIncome(double income) {
     this.income = income;
+  }
+
+  public void setNetIncome(double netIncome) {
+    this.firstName = firstName;
   }
 }
