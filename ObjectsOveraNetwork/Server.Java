@@ -22,11 +22,6 @@ public class Server {
   private Socket socket;
   
   /**
-   * The `ObjectInputStream` used to receive objects from the client.
-   */
-  private ObjectInputStream ois;
-  
-  /**
    * The `ObjectOutputStream` used to send objects to the client.
    */
   private ObjectOutputStream oos;
