@@ -38,8 +38,8 @@ public class Server {
    *
    * @throws IOException if an I/O error occurs while creating the `ServerSocket` or the streams
    */
-  public Server() throws IOException {
-    this.serverSocket = new ServerSocket(8000);
+  public Server(Properties config) throws IOException {
+    this.serverSocket = new ServerSocket(config.getProperty("port"));
     this.socket = serverSocket.accept();
     this.ois = new ObjectInputStream(socket.getInputStream());
     this.oos = new ObjectOutputStream(socket.getOutputStream());
