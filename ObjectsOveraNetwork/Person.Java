@@ -94,7 +94,7 @@ class Person {
    * @param netIncome the new net income of the person.
    */
   public void setNetIncome(double netIncome) {
-    this.firstName = firstName;
+    this.netIncome = netIncome;
   }
 
   /**
