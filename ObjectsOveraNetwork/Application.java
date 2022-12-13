@@ -24,8 +24,8 @@ public class Application {
    * @throws IOException if an error occurs while reading the configuration file
    */
   public static void main(String[] args) throws IOException, ClassNotFoundException {
-    ExecutorService executorService = Executors.newFixedThreadPool(2);
     Properties config = readConfig(CONFIG_PATH);
+    ExecutorService executorService = Executors.newFixedThreadPool(2);
     executorService.submit(new Server(config));
     executorService.submit(new Client(config));
   }
