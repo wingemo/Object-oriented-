@@ -20,3 +20,17 @@ The `Transaction` class implements the `Runnable` interface, which means that it
 ## Limitations
 
 This is a simple simulation of a bank and is not intended for use in a real-world banking system. It does not include features such as authentication, security, or error handling. It is intended for educational purposes only.
+
+## Configuration file
+
+This is a configuration file it contains several parameters that control the behavior of the system.
+
+The promptNumTransactions parameter specifies the message that should be displayed to the user when the system prompts for the number of transactions that will be processed.
+
+The promptTransactionDetails parameter specifies the message that should be displayed to the user when the system prompts for the details of each transaction, such as the transaction ID, type, and amount.
+
+The newFixedThreadPool parameter specifies the number of threads that should be used in the thread pool for processing transactions.
+
+The accounts parameter specifies the number of accounts that are being tracked by the system.
+
+Overall, this configuration file allows for customization of the transaction processing system to suit the needs of the user.
