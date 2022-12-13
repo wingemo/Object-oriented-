@@ -23,7 +23,8 @@ public class Application {
         Person personToSend = new Person(
           config.getProperty("firstName", ""),
           config.getProperty("lastName", ""),
-          config.getProperty("income", "")
+          config.getProperty("income", ""),
+          config.getProperty("netIncome", "")
         );
         server.sendPerson(personToSend);
         Person person = client.receivePerson();
