@@ -40,9 +40,9 @@ public class Application {
     executorService.submit(new Client(config, logger));
     executorService.shutdown();
   } catch (IOException e) {
-    // Handle IOException
+    logger.error(e);
   } catch (ClassNotFoundException e) {
-    // Handle ClassNotFoundException
+    logger.error(e);
   }
 }
 
