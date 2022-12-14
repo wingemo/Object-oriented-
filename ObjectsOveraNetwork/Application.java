@@ -30,16 +30,22 @@ public class Application {
    * @param args command-line arguments
    * @throws IOException if an error occurs while reading the configuration file
    */
-  public static void main(String[] args) throws IOException, ClassNotFoundException {
-    Properties config = readConfig(CONFIG_PATH);
+   public static void main(String[] args) {
+     try {
+        Properties config = readConfig(CONFIG_PATH);
     Logger logger = Logger.getLogger("");
     logger.setLevel(Level.INFO);
-    
     ExecutorService executorService = Executors.newFixedThreadPool(2);
     executorService.submit(new Server(config, logger));
     executorService.submit(new Client(config, logger));
     executorService.shutdown();
+  } catch (IOException e) {
+    // Handle IOException
+  } catch (ClassNotFoundException e) {
+    // Handle ClassNotFoundException
   }
+}
+
 
   /**
    * Reads the configuration properties from the specified file.
