@@ -1,7 +1,7 @@
 package com.wingemo;
 
-import org.apache.log4j.PropertyConfigurator;
-import org.apache.log4j.Logger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +20,11 @@ public class Application {
   public static final String CONFIG_PATH = "src/com/wingemo/config.properties";
 
   /**
+   * Represents the path to the configuration properties file.
+   */
+  private static Logger logger = Logger.getLogger(HelloWorld.class.getName());
+
+  /**
    * The entry point of the application.
    *
    * @param args command-line arguments
@@ -27,9 +32,6 @@ public class Application {
    */
   public static void main(String[] args) throws IOException, ClassNotFoundException {
     Properties config = readConfig(CONFIG_PATH);
-    PropertyConfigurator.configure("src/com/wingemo/log4j.properties");
-    Logger logger = Logger.getLogger(Application.class);
-
     ExecutorService executorService = Executors.newFixedThreadPool(2);
     executorService.submit(new Server(config, logger));
     executorService.submit(new Client(config, logger));
