@@ -29,7 +29,6 @@ public class Application {
      try {
        Properties config = readConfig(CONFIG_PATH);
        Logger logger = Logger.getLogger("");
-       logger.setLevel(Level.INFO);
        ExecutorService executorService = Executors.newFixedThreadPool(2);
        executorService.submit(new Server(config, logger));
        executorService.submit(new Client(config, logger));
