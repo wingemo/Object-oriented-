@@ -41,7 +41,6 @@ public class Application {
      }
   }
 
-
   /**
    * Reads the configuration properties from the specified file.
    * 
