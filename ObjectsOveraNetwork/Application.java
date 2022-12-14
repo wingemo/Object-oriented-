@@ -32,19 +32,19 @@ public class Application {
    */
    public static void main(String[] args) {
      try {
-        Properties config = readConfig(CONFIG_PATH);
-    Logger logger = Logger.getLogger("");
-    logger.setLevel(Level.INFO);
-    ExecutorService executorService = Executors.newFixedThreadPool(2);
-    executorService.submit(new Server(config, logger));
-    executorService.submit(new Client(config, logger));
-    executorService.shutdown();
-  } catch (IOException e) {
-    logger.error(e);
-  } catch (ClassNotFoundException e) {
-    logger.error(e);
+       Properties config = readConfig(CONFIG_PATH);
+       Logger logger = Logger.getLogger("");
+       logger.setLevel(Level.INFO);
+       ExecutorService executorService = Executors.newFixedThreadPool(2);
+       executorService.submit(new Server(config, logger));
+       executorService.submit(new Client(config, logger));
+       executorService.shutdown();
+     } catch (IOException e) {
+       logger.error(e);
+     } catch (ClassNotFoundException e) {
+       logger.error(e);
+     }
   }
-}
 
 
   /**
