@@ -32,6 +32,9 @@ public class Application {
    */
   public static void main(String[] args) throws IOException, ClassNotFoundException {
     Properties config = readConfig(CONFIG_PATH);
+    Logger logger = Logger.getLogger("");
+    logger.setLevel(Level.INFO);
+    
     ExecutorService executorService = Executors.newFixedThreadPool(2);
     executorService.submit(new Server(config, logger));
     executorService.submit(new Client(config, logger));
