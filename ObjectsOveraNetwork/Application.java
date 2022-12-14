@@ -27,10 +27,16 @@ public class Application {
    */
   public static void main(String[] args) throws IOException, ClassNotFoundException {
     Properties config = readConfig(CONFIG_PATH);
+    PropertyConfigurator.configure("src/com/wingemo/log4j.properties");
+    Logger logger = Logger.getLogger(Application.class);
+
     ExecutorService executorService = Executors.newFixedThreadPool(2);
     executorService.submit(new Server(config));
     executorService.submit(new Client(config));
     executorService.shutdown();
+    
+    // Log a message at the "debug" log level
+    logger.debug("This is a debug message");
   }
 
   /**
