@@ -31,12 +31,9 @@ public class Application {
     Logger logger = Logger.getLogger(Application.class);
 
     ExecutorService executorService = Executors.newFixedThreadPool(2);
-    executorService.submit(new Server(config));
-    executorService.submit(new Client(config));
+    executorService.submit(new Server(config, logger));
+    executorService.submit(new Client(config, logger));
     executorService.shutdown();
-    
-    // Log a message at the "debug" log level
-    logger.debug("This is a debug message");
   }
 
   /**
