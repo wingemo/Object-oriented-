@@ -20,11 +20,6 @@ public class Application {
   public static final String CONFIG_PATH = "src/com/wingemo/config.properties";
 
   /**
-   * Represents the path to the configuration properties file.
-   */
-  private static Logger logger = Logger.getLogger(HelloWorld.class.getName());
-
-  /**
    * The entry point of the application.
    *
    * @param args command-line arguments
