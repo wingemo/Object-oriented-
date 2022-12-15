@@ -8,8 +8,9 @@ import java.net.Socket;
 import java.util.Properties;
 
 /**
- * A simple server class that listens for incoming connections on port,
- * writes serialized {@link Person} objects to the connected client.
+ * A simple server class that listens for incoming connections on a specified port,
+ * sends serialized {@link Person} objects to the connected client, and receives
+ * `Person` objects from the client.
  *
  * @author Philip Wingemo
  */
