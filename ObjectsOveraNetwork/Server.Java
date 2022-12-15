@@ -29,6 +29,11 @@ public class Server implements Runnable {
    */
   private ObjectOutputStream oos;
 
+  /**
+   * The `ObjectOutputStream` used to send objects to the client.
+   */
+  private ObjectInputStream ois;
+  
   private Properties config;
 
   /**
@@ -82,7 +87,7 @@ public class Server implements Runnable {
           config.getProperty("income"),
           config.getProperty("taxRate"));
         sendPerson(personToSend);
-        ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+        ois = new ObjectInputStream(socket.getInputStream());
         Person receivedPerson = (Person) ois.readObject();
         System.out.println(receivedPerson);
         break;
