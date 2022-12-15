@@ -7,8 +7,7 @@ import java.util.Properties;
 
 /**
  * A Java client that connects to a server and receives a {@link Person} object from the server.
- * The client then applies a tax rate to the person's income,
- * and prints a message to the console with the modified {@link Person} object.
+ * The client then applies a tax rate to the person's income, and then send back the {@link Person} object.
  *
  * @author Philip Wingemo
  */
