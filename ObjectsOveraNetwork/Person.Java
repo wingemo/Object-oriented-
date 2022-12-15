@@ -4,21 +4,22 @@ package com.wingemo;
  * Represents a person with a first and last name, income, and net income after taxes.
  */
 class Person {
+  
   /**
    * The person's first name.
    */
   private String firstName;
-
+  
   /**
    * The person's last name.
    */
   private String lastName;
-
+  
   /**
    * The person's income.
    */
   private double income;
-
+  
   /**
    * The person's net income after taxes.
    */
