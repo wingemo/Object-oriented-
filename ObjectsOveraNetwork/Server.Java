@@ -108,7 +108,7 @@ public class Server implements Runnable {
           config.getProperty("lastName"),
           config.getProperty("income"),
           config.getProperty("taxRate"));
-        logger.info(personToSend);
+        logger.info(personToSend.toString());
         sendPerson(personToSend);
         ois = new ObjectInputStream(socket.getInputStream());
         Person receivedPerson = (Person) ois.readObject();
