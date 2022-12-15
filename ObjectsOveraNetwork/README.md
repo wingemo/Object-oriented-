@@ -15,7 +15,7 @@ To run the example, start the server by running the following command:
 java com.wingemo.Application
 ```
 
-The server will start listening on the host and port specified in the `config.properties` file. You can modify the host and port by editing the `config.properties` file. This will also start the client, which will connect to the server and send and receive a `Person` object. The client will also apply a tax rate to the person's income, and then send the modified `Person` object back to the server.
+The server will start listening on the host and port specified in the config.properties file. You can modify the host and port by editing the config.properties file. This will also start the client, which will connect to the server and send and receive a Person object. The client will also apply a tax rate to the person's income, and then send the modified Person object back to the server.
 
 ## Files
 
