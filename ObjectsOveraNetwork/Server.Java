@@ -64,11 +64,12 @@ public class Server implements Runnable {
   }
 
  /**
-  * Runs the server socket in a loop and accepts incoming connections.
-  * If a connection is established, a new {@link Person} is created using the
-  * configuration properties "firstName", "lastName", "income", and "taxRate",
-  * and the person is sent using the {@link #sendPerson(Person)} method.
-  * If an IOException occurs, it is printed to the standard error output.
+ * Runs the server socket in a loop and accepts incoming connections.
+ * If a connection is established, a new {@link Person} is created using the
+ * configuration properties "firstName", "lastName", "income", and "taxRate",
+ * and the person is sent using the {@link #sendPerson(Person)} method.
+ * The server then receives a {@link Person} object from the client, and prints it to the standard output.
+ * If an {@link IOException} occurs, it is printed to the standard error output.
  */
  public void run() {
   while (true) {
