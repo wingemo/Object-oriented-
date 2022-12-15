@@ -11,7 +11,7 @@ import java.util.Properties;
  * A simple server class that listens for incoming connections on port,
  * writes serialized {@link Person} objects to the connected client.
  *
- * @Philip Wingemo
+ * @author Philip Wingemo
  */
 public class Server implements Runnable {
   /**
@@ -36,13 +36,16 @@ public class Server implements Runnable {
   
   private Properties config;
 
+  private Logger logger;
+  
   /**
    * Creates a new Server instance.
    *
    * @param config a Properties object containing the port to use for the server
    * @throws IOException if an error occurs while creating the server socket
    */
-  public Server(Properties config) throws IOException {
+  public Server(Properties config, Logger logger) throws IOException {
+    this.logger = logger;
     this.config = config;
     this.serverSocket = new ServerSocket(parseInt(config.getProperty("port")));
   }
@@ -80,15 +83,15 @@ public class Server implements Runnable {
     return sb.toString();
   }
 
- /**
+/**
  * Runs the server socket in a loop and accepts incoming connections.
- * If a connection is established, a new {@link Person} is created using the
+ * When a connection is established, a new {@link Person} is created using the
  * configuration properties "firstName", "lastName", "income", and "taxRate",
  * and the person is sent using the {@link #sendPerson(Person)} method.
- * The server then receives a {@link Person} object from the client, and prints it to the standard output.
- * If an {@link IOException} occurs, it is printed to the standard error output.
+ * Then, the server receives a {@link Person} object from the client and prints it.
  */
  public void run() {
+  logger.info(toString());
   while (true) {
     try {
       this.socket = serverSocket.accept();
@@ -98,6 +101,7 @@ public class Server implements Runnable {
           config.getProperty("lastName"),
           config.getProperty("income"),
           config.getProperty("taxRate"));
+        logger.info(personToSend);
         sendPerson(personToSend);
         ois = new ObjectInputStream(socket.getInputStream());
         Person receivedPerson = (Person) ois.readObject();
@@ -105,7 +109,7 @@ public class Server implements Runnable {
         break;
       }
     } catch (IOException e) {
-      e.printStackTrace();
+      logger.error(e);
     }
   }
 }
