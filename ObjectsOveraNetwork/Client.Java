@@ -13,15 +13,29 @@ import java.util.Properties;
  * @author Philip Wingemo
  */
 public class Client implements Runnable {
-  // The socket for connecting to the server
+  /**
+   * The `Socket` used for connecting to the server.
+   */
   private Socket socket;
-  // The object input stream for reading the `Person` object from the server
+
+  /**
+   * The `ObjectInputStream` used for reading a `Person` object from the server.
+   */
   private ObjectInputStream ois;
-  // The tax rate to use for calculating taxes.
+
+  /**
+   * The tax rate to use for calculating taxes.
+   */
   private double taxRate;
 
+  /**
+   * The `Properties` object containing the server's configuration.
+   */
   private Properties config;
 
+  /**
+   * The `Logger` object used to log messages from the server.
+   */
   private Logger logger;
 
   /**
