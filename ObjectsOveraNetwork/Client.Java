@@ -7,6 +7,8 @@
   private double taxRate;
 
   private Properties config;
+  
+  private Logger logger;
 
   /**
    * Creates a new Client instance.
@@ -14,7 +16,8 @@
    * @param config a Properties object containing the host, port, and taxRate to use for the client
    * @throws IOException if there is an error creating the socket or initializing the object input stream
    */
-  public Client(Properties config) throws IOException {
+  public Client(Properties config, Logger logger) throws IOException {
+    this.logger = logger;
     this.config = config;
     this.socket = new Socket(config.getProperty("host"), Integer.parseInt(config.getProperty("port")));
     this.taxRate = Double.parseDouble(config.getProperty("taxRate"));
