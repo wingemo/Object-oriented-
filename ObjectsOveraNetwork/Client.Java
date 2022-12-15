@@ -34,6 +34,7 @@
   public Person receivePerson() throws IOException, ClassNotFoundException {
     Person person = (Person) ois.readObject();
     person.setNetIncome(taxRate * person.getIncome());
+    logger.info(person);
     return person;
   }
 
@@ -69,7 +70,7 @@
     try {
       sendPerson(receivePerson());
     } catch (IOException e) {
-      e.printStackTrace();
+      logger.error(e);
     }
   }
 }
