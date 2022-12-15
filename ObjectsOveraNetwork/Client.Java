@@ -1,18 +1,4 @@
-package com.wingemo;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.net.Socket;
-import java.util.Properties;
-
-/**
- * A Java lient that connects to a server and receives a Person object from the server.
- * The client then applies a tax rate to the person's income,
- * and prints a message to the console with the modified Person object.
- *
- * @Philip Wingemo
- */
-public class Client implements Runnable {
+{
   // The socket for connecting to the server
   private Socket socket;
   // The object input stream for reading the `Person` object from the server
@@ -26,6 +12,7 @@ public class Client implements Runnable {
    * Creates a new Client instance.
    *
    * @param config a Properties object containing the host, port, and taxRate to use for the client
+   * @throws IOException if there is an error creating the socket or initializing the object input stream
    */
   public Client(Properties config) throws IOException {
     this.config = config;
@@ -46,7 +33,7 @@ public class Client implements Runnable {
     person.setNetIncome(taxRate * person.getIncome());
     return person;
   }
-  
+
   /**
    * Writes a {@link Person} object to an {@link ObjectOutputStream}.
    *
@@ -79,8 +66,6 @@ public class Client implements Runnable {
     try {
       sendPerson(receivePerson());
     } catch (IOException e) {
-      e.printStackTrace();
-    } catch (ClassNotFoundException e) {
       e.printStackTrace();
     }
   }
