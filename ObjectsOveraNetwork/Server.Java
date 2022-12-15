@@ -34,10 +34,16 @@ public class Server implements Runnable {
    */
   private ObjectInputStream ois;
   
+  /**
+   * The `Properties` object containing the server's configuration.
+   */
   private Properties config;
 
+  /**
+   * The `Logger` object used to log messages from the server.
+   */
   private Logger logger;
-  
+
   /**
    * Creates a new Server instance.
    *
