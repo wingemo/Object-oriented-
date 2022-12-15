@@ -46,6 +46,18 @@ public class Client implements Runnable {
     person.setNetIncome(taxRate * person.getIncome());
     return person;
   }
+  
+  /**
+   * Writes a {@link Person} object to an {@link ObjectOutputStream}.
+   *
+   * @param person the {@link Person} object to write
+   * @throws IOException if there is an error writing to the {@link ObjectOutputStream}
+   */
+  public void sendPerson(Person person) throws IOException {
+    ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+    oos.writeObject(person);
+    oos.flush();
+  }
 
   /**
    * Closes the connection to the server.
@@ -64,10 +76,8 @@ public class Client implements Runnable {
    * @throws ClassNotFoundException if the class of the serialized person object cannot be found
    */
   public void run() {
-    Person person = null;
     try {
-      person = receivePerson();
-      System.out.print(person);
+      sendPerson(receivePerson());
     } catch (IOException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
