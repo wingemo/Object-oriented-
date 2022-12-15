@@ -21,7 +21,7 @@ public class Client implements Runnable {
   private double taxRate;
 
   private Properties config;
-  
+
   private Logger logger;
 
   /**
@@ -75,6 +75,21 @@ public class Client implements Runnable {
   }
 
   /**
+   * Returns a string representation of the `Client` object.
+   *
+   * @return a string representation of the `Client` object
+   */
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Client[host=").append(config.getProperty("host"))
+      .append(",port=").append(config.getProperty("port"))
+      .append(",taxRate=").append(taxRate)
+      .append("]");
+    return sb.toString();
+  }
+
+  /**
    * Receives a person object, prints it to the standard output.
    *
    * @throws IOException if an I/O error occurs while receiving the person object
@@ -82,6 +97,7 @@ public class Client implements Runnable {
    */
   public void run() {
     try {
+      logger.info(toString());
       sendPerson(receivePerson());
     } catch (IOException e) {
       logger.error(e);
