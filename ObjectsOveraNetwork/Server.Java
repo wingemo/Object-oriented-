@@ -70,22 +70,25 @@ public class Server implements Runnable {
   * and the person is sent using the {@link #sendPerson(Person)} method.
   * If an IOException occurs, it is printed to the standard error output.
  */
-  public void run() {
-    while (true) {
-      try {
-        this.socket = serverSocket.accept();
-        if (this.socket.isConnected()) {
-          Person personToSend = new Person(
-            config.getProperty("firstName"),
-            config.getProperty("lastName"),
-            config.getProperty("income"),
-            config.getProperty("taxRate"));
-          sendPerson(personToSend);
-          break;
-        }
-      } catch (IOException e) {
-        e.printStackTrace();
+ public void run() {
+  while (true) {
+    try {
+      this.socket = serverSocket.accept();
+      if (this.socket.isConnected()) {
+        Person personToSend = new Person(
+          config.getProperty("firstName"),
+          config.getProperty("lastName"),
+          config.getProperty("income"),
+          config.getProperty("taxRate"));
+        sendPerson(personToSend);
+        ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+        Person receivedPerson = (Person) ois.readObject();
+        System.out.println(receivedPerson);
+        break;
       }
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
+}
 }
