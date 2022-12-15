@@ -1,9 +1,11 @@
 package com.wingemo;
 
+import java.io.Serializable;
+
 /**
  * Represents a person with a first and last name, income, and net income after taxes.
  */
-class Person {
+class Person implements Serializable {
   /**
    * The person's first name.
    */
