@@ -67,6 +67,18 @@ public class Server implements Runnable {
     oos.close();
     serverSocket.close();
   }
+  
+  /**
+   * Returns a string representation of the `Server` object.
+   *
+   * @return a string representation of the `Server` object
+   */
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Server[port=").append(config.getProperty("port")).append("]");
+    return sb.toString();
+  }
 
  /**
  * Runs the server socket in a loop and accepts incoming connections.
