@@ -24,3 +24,11 @@ The server will start listening on the host and port specified in the config.pro
 - `Client.java`: A Java class that represents the client. The client connects to the server, receives a `Person` object, modifies the object, and then sends it back to the server.
 - `Person.java`: A Java class that represents a person. This class is used for sending and receiving objects over the network.
 - `config.properties`: A configuration file that contains the host, port, and tax rate to use for the server and client.
+
+## JUnit Tests
+This program includes the following JUnit tests:
+
+ApplicationTest: Tests the readConfig() method to ensure that it can read the configuration file correctly.
+ClientTest: Tests the receivePerson() method to ensure that it can receive a Person object from the server and apply the correct tax rate to its income.
+PersonTest: Tests the Person class to ensure that its properties can be set and retrieved correctly.
+ServerTest: Tests the sendPerson() method to ensure that it can send a Person object over the network correctly.
