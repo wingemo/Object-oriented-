@@ -1,4 +1,18 @@
-{
+package com.wingemo;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.Socket;
+import java.util.Properties;
+
+/**
+ * A Java client that connects to a server and receives a {@link Person} object from the server.
+ * The client then applies a tax rate to the person's income,
+ * and prints a message to the console with the modified {@link Person} object.
+ *
+ * @author Philip Wingemo
+ */
+public class Client implements Runnable {
   // The socket for connecting to the server
   private Socket socket;
   // The object input stream for reading the `Person` object from the server
